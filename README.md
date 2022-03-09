@@ -22,3 +22,7 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+# preview
+[Preview](https://epic-fermat-82be53.netlify.app/)
