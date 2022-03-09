@@ -19,6 +19,9 @@
             @keyup.enter="handleAddTask"
           ></v-text-field>
         </v-col>
+        <v-alert v-if="$store.state.tasks.length === 0" type="info">
+          Vamos cadastrar uma tarefa?
+        </v-alert>
         <div
           v-for="task in $store.state.tasks"
           :key="task.id"
