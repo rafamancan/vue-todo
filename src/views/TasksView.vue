@@ -1,56 +1,40 @@
 <template>
-  <v-list
-      flat
-      subheader
+  <div>
+    <TaskList />
+    <div
+    v-if="!$store.state.tasks.length"
+    class="mt-16 animate__animated animate__bounceInUp"
     >
-      <v-list-item-group
-        multiple
-        active-class=""
-      >
-        <v-col
-          cols="12"
+      <center>
+        <v-icon
+        size="100"
+        color="primary"
         >
-          <v-text-field
-            label="Qual é a sua tarefa?"
-            outlined
-            dense
-            clearable
-            v-model="newTask"
-            @keyup.enter="handleAddTask"
-          ></v-text-field>
-        </v-col>
-        <v-alert v-if="$store.state.tasks.length === 0" type="info">
-          Vamos cadastrar uma tarefa?
-        </v-alert>
+          mdi-check
+        </v-icon>
+
         <div
-          v-for="task in $store.state.tasks"
-          :key="task.id"
+        class="text-h5 primary--text"
         >
-          <TaskItem
-            :task="task"
-          />
+          Nenhuma tarefa
         </div>
-      </v-list-item-group>
-    </v-list></template>
+
+      </center>
+    </div>
+  <AlertMessage />
+  </div>
+</template>
 
 <script>
-import TaskItem from '../components/tasks/TaskItem.vue'
+import TaskList from '../components/tasks/TaskList.vue'
 
 export default {
-  name: 'TasksView',
+  name: 'HomeView',
   components: {
-    TaskItem
+    TaskList
   },
-  data () {
-    return {
-      newTask: null
-    }
-  },
-  methods: {
-    handleAddTask () {
-      this.$store.commit('addTask', this.newTask)
-      this.newTask = null
-    }
+  created() {
+    this.$store.commit('searchTasks')
   }
 }
 </script>

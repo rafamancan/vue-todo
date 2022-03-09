@@ -1,9 +1,24 @@
 <template>
   <v-app id="inspire">
+
     <v-navigation-drawer
-      v-model="drawer"
-      app
+    v-model="drawer"
+    app
     >
+    <v-img
+    src="./assets/bg.jpg"
+    gradient="to top right, rgba(19,84,122,.5), rgba(28,108,199,.8)"
+    dark
+    class="pt-5 text-center"
+    >
+      <v-avatar
+      size="100"
+      >
+        <img
+          src="https://pixabay.com/get/gc8ee141c4aa4e6f591039fe4861a56a6f6e7a3e59fcd19ee8dcd9dd549baf2a2a51f156f93070db159edae8c844949ce3f3b54421f6c50e156171e7e6c02de60b21b837e8bdc03044d36afb8f1960f3b_640.jpg"
+          alt="John"
+        >
+      </v-avatar>
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6">
@@ -14,6 +29,7 @@
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
+    </v-img>
 
       <v-divider></v-divider>
 
@@ -40,9 +56,10 @@
 
     <v-app-bar
       app
-      color="#43a047"
-      dark
       prominent
+      height="185"
+      color="#fcb69f"
+      dark
       src="./assets/bg.jpg"
     >
       <template v-slot:img="{ props }">
@@ -54,21 +71,17 @@
 
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-app-bar-title>Title</v-app-bar-title>
+      <center>
+        <v-app-bar-title
+        class="mt-16"
+        >
+          <InputTask
+          style="padding: 0 !important; min-width: 100% !important;"
+          />
 
-      <v-spacer></v-spacer>
+        </v-app-bar-title>
+      </center>
 
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
     </v-app-bar>
 
     <v-main>
@@ -78,15 +91,15 @@
 </template>
 
 <script>
+import InputTask from './components/InputTask.vue'
 export default {
-  data () {
-    return {
-      drawer: null,
-      items: [
-        { title: 'Tarefas', icon: 'mdi-view-dashboard', to: '/' },
-        { title: 'Sobre', icon: 'mdi-help-box', to: '/about' }
-      ]
-    }
-  }
+  components: { InputTask },
+  data: () => ({
+    drawer: null,
+    items: [
+      { title: 'Tarefas', icon: 'mdi-view-dashboard', to: '/' },
+      { title: 'Sobre', icon: 'mdi-help-box', to: '/about' }
+    ]
+  })
 }
 </script>
