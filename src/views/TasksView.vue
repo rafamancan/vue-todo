@@ -20,7 +20,7 @@
           ></v-text-field>
         </v-col>
         <div
-          v-for="task in tasks"
+          v-for="task in $store.state.tasks"
           :key="task.id"
         >
           <TaskItem
@@ -40,36 +40,13 @@ export default {
   },
   data () {
     return {
-      newTask: null,
-      tasks: [
-        {
-          id: 1,
-          name: 'Task 1',
-          completed: false
-        },
-        {
-          id: 2,
-          name: 'Task 2',
-          completed: false
-        },
-        {
-          id: 3,
-          name: 'Task Completed',
-          completed: true
-        }
-      ]
+      newTask: null
     }
   },
   methods: {
     handleAddTask () {
-      if (this.newTask) {
-        this.tasks.push({
-          id: this.tasks.length + 1,
-          name: this.newTask,
-          completed: false
-        })
-        this.newTask = null
-      }
+      this.$store.commit('addTask', this.newTask)
+      this.newTask = null
     }
   }
 }
