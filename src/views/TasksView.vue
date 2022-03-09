@@ -1,5 +1,5 @@
 <template>
-  <hello-world />
+  <h1>Tasks Page</h1>
 </template>
 
 <script>
